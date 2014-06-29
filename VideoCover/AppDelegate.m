@@ -16,7 +16,6 @@
     // Override point for customization after application launch.
     [[UIApplication sharedApplication]setStatusBarHidden:NO];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     ViewController *viewController = [[ViewController alloc]initWithNibName:@"ViewController" bundle:nil];
     UINavigationController *navigationController = [[UINavigationController alloc]initWithRootViewController:viewController];

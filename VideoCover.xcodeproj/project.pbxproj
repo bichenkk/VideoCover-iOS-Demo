@@ -404,6 +404,7 @@
 				GCC_PREFIX_HEADER = "VideoCover/VideoCover-Prefix.pch";
 				INFOPLIST_FILE = "VideoCover/VideoCover-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "E17CE9BB-0497-4D3C-9B81-0E7A8F750AB8";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -417,6 +418,7 @@
 				GCC_PREFIX_HEADER = "VideoCover/VideoCover-Prefix.pch";
 				INFOPLIST_FILE = "VideoCover/VideoCover-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "E17CE9BB-0497-4D3C-9B81-0E7A8F750AB8";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

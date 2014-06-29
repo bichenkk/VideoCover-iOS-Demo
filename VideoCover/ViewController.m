@@ -46,6 +46,12 @@
     [avPlayerLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
     [avPlayerLayer setFrame:self.view.frame];
     [self.movieView.layer addSublayer:avPlayerLayer];
+
+    //Not affecting background music playing
+    NSError *sessionError = nil;
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient error:&sessionError];
+    [[AVAudioSession sharedInstance] setActive:YES error:&sessionError];
+    
     [self.avplayer seekToTime:kCMTimeZero];
     [self.avplayer setVolume:0.0f];
     [self.avplayer setActionAtItemEnd:AVPlayerActionAtItemEndNone];
