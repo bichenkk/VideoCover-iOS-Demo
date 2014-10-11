@@ -34,24 +34,23 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    NSBundle *bundle = [NSBundle mainBundle];
-    NSString *moviePath = [bundle pathForResource:@"xx" ofType:@"mp4"];
-    NSURL *movieURL = [NSURL fileURLWithPath:moviePath];
     
-    AVAsset *avAsset = [AVAsset assetWithURL:movieURL];
-    AVPlayerItem *avPlayerItem =[[AVPlayerItem alloc]initWithAsset:avAsset];
-    self.avplayer = [[AVPlayer alloc]initWithPlayerItem:avPlayerItem];
-    AVPlayerLayer *avPlayerLayer =[AVPlayerLayer playerLayerWithPlayer:self.avplayer];
-    [avPlayerLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
-    [avPlayerLayer setFrame:self.view.frame];
-    [self.movieView.layer addSublayer:avPlayerLayer];
-
     //Not affecting background music playing
     NSError *sessionError = nil;
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient error:&sessionError];
     [[AVAudioSession sharedInstance] setActive:YES error:&sessionError];
     
+    //Set up player
+    NSURL *movieURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"xx" ofType:@"mp4"]];
+    AVAsset *avAsset = [AVAsset assetWithURL:movieURL];
+    AVPlayerItem *avPlayerItem =[[AVPlayerItem alloc]initWithAsset:avAsset];
+    self.avplayer = [[AVPlayer alloc]initWithPlayerItem:avPlayerItem];
+    AVPlayerLayer *avPlayerLayer =[AVPlayerLayer playerLayerWithPlayer:self.avplayer];
+    [avPlayerLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
+    [avPlayerLayer setFrame:[[UIScreen mainScreen] bounds]];
+    [self.movieView.layer addSublayer:avPlayerLayer];
+    
+    //Config player
     [self.avplayer seekToTime:kCMTimeZero];
     [self.avplayer setVolume:0.0f];
     [self.avplayer setActionAtItemEnd:AVPlayerActionAtItemEndNone];
@@ -59,8 +58,10 @@
                                              selector:@selector(playerItemDidReachEnd:)
                                                  name:AVPlayerItemDidPlayToEndTimeNotification
                                                object:[self.avplayer currentItem]];
+    
+    //Config dark gradient view
     CAGradientLayer *gradient = [CAGradientLayer layer];
-    gradient.frame = self.gradientView.bounds;
+    gradient.frame = [[UIScreen mainScreen] bounds];
     gradient.colors = [NSArray arrayWithObjects:(id)[UIColorFromRGB(0x030303) CGColor], (id)[[UIColor clearColor] CGColor], (id)[UIColorFromRGB(0x030303) CGColor],nil];
     [self.gradientView.layer insertSublayer:gradient atIndex:0];
 }
