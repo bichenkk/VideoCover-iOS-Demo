@@ -58,6 +58,9 @@
                                              selector:@selector(playerItemDidReachEnd:)
                                                  name:AVPlayerItemDidPlayToEndTimeNotification
                                                object:[self.avplayer currentItem]];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(playerStartPlaying)
+                                                 name:UIApplicationDidBecomeActiveNotification object:nil];
     
     //Config dark gradient view
     CAGradientLayer *gradient = [CAGradientLayer layer];
@@ -87,6 +90,12 @@
     AVPlayerItem *p = [notification object];
     [p seekToTime:kCMTimeZero];
 }
+
+- (void)playerStartPlaying
+{
+    [self.avplayer play];
+}
+
 
 - (IBAction)buttonPressed:(id)sender {
     ViewController2 *viewController = [[ViewController2 alloc]initWithNibName:@"ViewController2" bundle:nil];
