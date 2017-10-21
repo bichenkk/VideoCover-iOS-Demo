@@ -1,6 +1,6 @@
-VideoCover-iOS
+Video Cover (Objective-C)
 ==============
 
-A simple demo to add video in the background
+A simple demo to show a background video using AVPlayer in Objective-C.
 
-![ScreenShot](https://raw.github.com/bichenkk/VideoCover-iOS/master/Screenshots/screenshot.png)
+![ScreenShot](https://github.com/bichenkk/ios-videocover-demo/blob/master/Screenshots/screenshot.png)

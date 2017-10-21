@@ -22,15 +22,6 @@
 
 @implementation ViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -96,16 +87,9 @@
     [self.avplayer play];
 }
 
-
 - (IBAction)buttonPressed:(id)sender {
     ViewController2 *viewController = [[ViewController2 alloc]initWithNibName:@"ViewController2" bundle:nil];
     [self.navigationController pushViewController:viewController animated:YES];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end
